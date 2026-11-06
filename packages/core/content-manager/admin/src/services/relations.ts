@@ -126,6 +126,9 @@ const relationsApi = contentManagerApi.injectEndpoints({
           endpointName,
           model: queryArgs.model,
           targetField: queryArgs.targetField,
+          // `id` identifies the source document or component: without it, two components
+          // sharing the same field would read each other's cached results.
+          id: queryArgs.params?.id,
           _q: queryArgs.params?._q,
           idsToOmit: queryArgs.params?.idsToOmit,
           idsToInclude: queryArgs.params?.idsToInclude,

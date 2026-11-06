@@ -625,6 +625,13 @@ const RelationsInput = ({
        *
        */
       onChange(relation);
+
+      /**
+       * The combobox text is cleared once a relation is selected, so the search must be cleared too.
+       * Otherwise the next time the dropdown opens it would still filter by the previous search and
+       * show stale results that no longer list the remaining entries.
+       */
+      setSearchParams((s) => ({ ...s, _q: '', page: 1 }));
     },
     [data, formatMessage, onChange, toggleNotification]
   );
